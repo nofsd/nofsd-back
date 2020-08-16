@@ -61,7 +61,7 @@ public class Equipamento {
     public static class EquipamentoRules {
         
         private void validaPadraoIdentificador(String identificador) {
-            if (!identificador.substring(0, 1).matches("[A-Z\s]")) {
+            if (!identificador.substring(0, 1).matches("[A-Z\\s]")) {
                 throw new IllegalArgumentException(IDENTIFICADOR_PADRAO); 
             }
         }
