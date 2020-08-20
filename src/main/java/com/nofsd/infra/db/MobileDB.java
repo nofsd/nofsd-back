@@ -21,5 +21,7 @@ public class MobileDB extends PanacheMongoEntity {
     public String numero;
     public String ddd;
     public String pais;
-    
+    public String dataLocacao;
+    public String dataDevolucao;
+    public String status;
 }
