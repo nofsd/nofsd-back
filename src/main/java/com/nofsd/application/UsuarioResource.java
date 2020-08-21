@@ -1,6 +1,7 @@
 package com.nofsd.application;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -41,7 +42,13 @@ public class UsuarioResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<UsuarioDB> getTodosUsuarios() {
+    public List<UsuarioDB> getTodosUsuarios(@QueryParam("prv") String prv) {
+        System.out.println("Todos");
+
+        if (Objects.nonNull(prv)) {
+           return UsuarioDB.find("prv",prv).list();
+        }
+
         return UsuarioDB.listAll();
     }
 
@@ -52,12 +59,11 @@ public class UsuarioResource {
         return UsuarioDB.findById(new ObjectId(id));
     }
 
-    @GET
+    /*@GET
     @Produces(MediaType.APPLICATION_JSON)
     public UsuarioDB buscaUsuarioPorPrv(@QueryParam("prv") String prv) {
+       System.out.println(prv);
        return UsuarioDB.find("prv",prv).firstResult();
-       
-        
-    }
+    }*/
 
 }
