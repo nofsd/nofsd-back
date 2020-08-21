@@ -12,6 +12,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
+import javax.ws.rs.QueryParam;
+
+
+
 import com.nofsd.infra.db.UsuarioDB;
 
 import org.bson.types.ObjectId;
@@ -47,4 +51,13 @@ public class UsuarioResource {
     public UsuarioDB buscaUsuarioPorId(@PathParam("id") String id) {
         return UsuarioDB.findById(new ObjectId(id));
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public UsuarioDB buscaUsuarioPorPrv(@QueryParam("prv") String prv) {
+       return UsuarioDB.find("prv",prv).firstResult();
+       
+        
+    }
+
 }
