@@ -5,8 +5,8 @@ import org.bson.types.ObjectId;
 import io.quarkus.mongodb.panache.MongoEntity;
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
 
-@MongoEntity(collection = "mobiles")
-public class MobileDB extends PanacheMongoEntity {
+@MongoEntity(collection = "ativos_fixos")
+public class AtivoFixoDB extends PanacheMongoEntity {
     
     public ObjectId id;
     public String modelo;
@@ -23,5 +23,6 @@ public class MobileDB extends PanacheMongoEntity {
     public String pais;
     public String dataLocacao;
     public String dataDevolucao;
-    public String status;
+    public Integer status;
+    public Integer tipo;
 }

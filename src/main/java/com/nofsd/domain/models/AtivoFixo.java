@@ -2,7 +2,7 @@ package com.nofsd.domain.models;
 
 import java.util.Objects;
 
-public class Mobile {
+public class AtivoFixo {
     
     private String modelo;
     private String marca;
@@ -18,16 +18,16 @@ public class Mobile {
     private String pais;
     private String dataLocacao;
     private String dataDevolucao;
-    private String status;
-
+    private StatusAtivo status;
+    private TipoAtivo tipoAtivo;
 
     @Deprecated
-    public Mobile() {
+    public AtivoFixo() {
     }
 
-    private Mobile(String modelo, String marca, String imei, String vouncher, String tradeIn, 
+    private AtivoFixo(String modelo, String marca, String imei, String vouncher, String tradeIn, 
         String usuario, String prv, String operadora, String pin, String numero, String ddd, String pais,
-        String dataLocacao, String dataDevolucao, String status) {
+        String dataLocacao, String dataDevolucao, StatusAtivo status, TipoAtivo tipoAtivo) {
         this.modelo = modelo;
         this.marca = marca;
         this.imei = imei;
@@ -43,6 +43,7 @@ public class Mobile {
         this.dataDevolucao = dataDevolucao;
         this.dataLocacao = dataLocacao;
         this.status = status;
+        this.tipoAtivo = tipoAtivo;
     }
 
     public String getModelo() {
@@ -101,15 +102,19 @@ public class Mobile {
         return dataLocacao;
     }
 
-    public String getStatus() {
+    public StatusAtivo getStatus() {
         return status;
     }
 
-    public static MobileBuild builder() {
-        return new MobileBuild();
+    public TipoAtivo getTipoAtivo() {
+        return tipoAtivo;
     }
 
-    public static class MobileBuild {
+    public static AtivoFixoBuild builder() {
+        return new AtivoFixoBuild();
+    }
+
+    public static class AtivoFixoBuild {
 
         private String modelo;
         private String marca;
@@ -125,86 +130,92 @@ public class Mobile {
         private String pais;
         private String dataLocacao;
         private String dataDevolucao;
-        private String status;
+        private StatusAtivo status;
+        private TipoAtivo tipoAtivo;
 
-        public MobileBuild modelo(String modelo) {
+        public AtivoFixoBuild modelo(String modelo) {
             this.modelo = modelo;
             return this;
         }
     
-        public MobileBuild marca(String marca) {
+        public AtivoFixoBuild marca(String marca) {
             this.marca = marca;
             return this;
         }
     
-        public MobileBuild imei(String imei) {
+        public AtivoFixoBuild imei(String imei) {
             this.imei = imei;
             return this;
         }
     
-        public MobileBuild vouncher(String vouncher) {
+        public AtivoFixoBuild vouncher(String vouncher) {
             this.vouncher = vouncher;
             return this;
         }
     
-        public MobileBuild tradeIn(String tradeIn) {
+        public AtivoFixoBuild tradeIn(String tradeIn) {
             this.tradeIn = tradeIn;
             return this;
         }
     
-        public MobileBuild usuario(String usuario) {
+        public AtivoFixoBuild usuario(String usuario) {
             this.usuario = usuario;
             return this;
         }
     
-        public MobileBuild prv(String prv) {
+        public AtivoFixoBuild prv(String prv) {
             this.prv = prv;
             return this;
         }
     
-        public MobileBuild operadora(String operadora) {
+        public AtivoFixoBuild operadora(String operadora) {
             this.operadora = operadora;
             return this;
         }
     
-        public MobileBuild pin(String pin) {
+        public AtivoFixoBuild pin(String pin) {
             this.pin = pin;
             return this;
         }
     
-        public MobileBuild numero(String numero) {
+        public AtivoFixoBuild numero(String numero) {
             this.numero = numero;
             return this;
         }
     
-        public MobileBuild ddd(String ddd) {
+        public AtivoFixoBuild ddd(String ddd) {
             this.ddd = ddd;
             return this;
         }
     
-        public MobileBuild pais(String pais) {
+        public AtivoFixoBuild pais(String pais) {
             this.pais = pais;
             return this;
         }
 
-        public MobileBuild dataDevolucao(String dataDevolucao) {
+        public AtivoFixoBuild dataDevolucao(String dataDevolucao) {
             this.dataDevolucao = dataDevolucao;
             return this;
         }
 
-        public MobileBuild dataLocacao(String dataLocacao) {
+        public AtivoFixoBuild dataLocacao(String dataLocacao) {
             this.dataLocacao = dataLocacao;
             return this;
         }
 
-        public MobileBuild status(String status) {
+        public AtivoFixoBuild status(StatusAtivo status) {
             this.status = status;
             return this;
         }
 
-        public Mobile build() {
-            return new Mobile(modelo, marca, imei, vouncher, tradeIn, usuario, prv, operadora, pin, numero, 
-                    ddd, pais, dataLocacao, dataDevolucao, status);
+        public AtivoFixoBuild tipoAtivo(TipoAtivo tipoAtivo) {
+            this.tipoAtivo = tipoAtivo;
+            return this;
+        }
+
+        public AtivoFixo build() {
+            return new AtivoFixo(modelo, marca, imei, vouncher, tradeIn, usuario, prv, operadora, pin, numero, 
+                    ddd, pais, dataLocacao, dataDevolucao, status, tipoAtivo);
         }
     }
 
@@ -213,11 +224,11 @@ public class Mobile {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Mobile)) {
+        if (!(o instanceof AtivoFixo)) {
             return false;
         }
-        Mobile mobile = (Mobile) o;
-        return Objects.equals(modelo, mobile.modelo) && Objects.equals(marca, mobile.marca) && Objects.equals(imei, mobile.imei) && Objects.equals(vouncher, mobile.vouncher) && Objects.equals(tradeIn, mobile.tradeIn) && Objects.equals(usuario, mobile.usuario) && Objects.equals(prv, mobile.prv) && Objects.equals(operadora, mobile.operadora) && Objects.equals(pin, mobile.pin) && Objects.equals(numero, mobile.numero) && Objects.equals(ddd, mobile.ddd) && Objects.equals(pais, mobile.pais) && Objects.equals(dataLocacao, mobile.dataLocacao) && Objects.equals(dataDevolucao, mobile.dataDevolucao) && Objects.equals(status, mobile.status);
+        AtivoFixo ativoFixo = (AtivoFixo) o;
+        return Objects.equals(modelo, ativoFixo.modelo) && Objects.equals(marca, ativoFixo.marca) && Objects.equals(imei, ativoFixo.imei) && Objects.equals(vouncher, ativoFixo.vouncher) && Objects.equals(tradeIn, ativoFixo.tradeIn) && Objects.equals(usuario, ativoFixo.usuario) && Objects.equals(prv, ativoFixo.prv) && Objects.equals(operadora, ativoFixo.operadora) && Objects.equals(pin, ativoFixo.pin) && Objects.equals(numero, ativoFixo.numero) && Objects.equals(ddd, ativoFixo.ddd) && Objects.equals(pais, ativoFixo.pais) && Objects.equals(dataLocacao, ativoFixo.dataLocacao) && Objects.equals(dataDevolucao, ativoFixo.dataDevolucao) && Objects.equals(status, ativoFixo.status);
     }
 
     @Override
