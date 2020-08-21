@@ -35,7 +35,7 @@ public class AtivoFixoResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public AtivoFixoDB buscaFamiliaPorId(@PathParam("id") String id) {
+    public AtivoFixoDB buscaAtivoPorId(@PathParam("id") String id) {
         return AtivoFixoDB.findById(new ObjectId(id));
     }
 
